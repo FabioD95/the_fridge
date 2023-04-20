@@ -8,13 +8,12 @@ from models.link import UserBoardLink
 
 class BoardBase(SQLModel):
     title: str = Field(index=True)
-    privat: bool
+    private: bool
 
 
 class Board(BoardBase, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
-
-    # user: List['User'] = Relationship(back_populates= 'users', link_model=UserBoardLink)
+    users: List['User'] = Relationship(back_populates='boards', link_model=UserBoardLink)
 
 
 class BoardCreate(BoardBase):

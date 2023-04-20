@@ -14,8 +14,7 @@ class UserBase(SQLModel):
 
 class User(UserBase, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
-
-    # board: List['Board'] = Relationship(back_populates= 'boards', link_model=UserBoardLink)
+    boards: List[Board] = Relationship(back_populates='users', link_model=UserBoardLink)
 
 
 class UserCreate(UserBase):

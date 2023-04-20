@@ -7,14 +7,13 @@ from sqlmodel import Field, Relationship, SQLModel
 
 class NoteBase(SQLModel):
     title: str = Field(index=True)
-    # privat: bool
+    private: bool
     content: str
+    board_id: int = Field(default=None, foreign_key='board.id')
 
 
 class Note(NoteBase, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
-
-    # board_id: Optional[int] = Field(default=None, foreign_key='board.id')
 
 
 class NoteCreate(NoteBase):
