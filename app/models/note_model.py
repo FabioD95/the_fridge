@@ -27,6 +27,6 @@ class NoteRead(NoteBase):
 class NoteUpdate(SQLModel):
     id: Optional[int] = None
     title: Optional[str] = None
-    # privat: Optional[bool] = None
-    content: str
+    privat: Optional[bool] = None
+    content: Optional[str] = None
 
